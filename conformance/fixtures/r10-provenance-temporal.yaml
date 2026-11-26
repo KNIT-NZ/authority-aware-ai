@@ -1,0 +1,37 @@
+# R10 Provenance, expression and temporal applicability: illustrative, not a suite.
+# "mechanism" = the R10 provenance/temporal handling; "claim" = the displayed result.
+requirement: R10
+fixtures:
+  - id: R10-01-wrong-expression
+    question: "Under the official 2030 Rules, how long may a member speak?"
+    setup: Only SAR-2030-compilation-2032 is held (SAR 42(1) reads "8 minutes"; the official 2030 text reads "10 minutes").
+    expected:
+      mechanism: "R10 expression identification: the answer names the expression used (editorial compilation, compiled 2032-07-15) and states that it is not the official 2030 expression asked about."
+      claim: 'An unqualified "8 minutes under the official 2030 Rules" MUST NOT be displayed; the answer is conditional on, or withholds, the official 2030 text.'
+    catches: Silent substitution of an editorial compilation for the official expression.
+  - id: R10-02-partial-commencement
+    question: "On 2031-09-01, could a landlord enter without notice in an emergency?"
+    expected:
+      mechanism: "R10 date-of-effect handling: STA s 12(2) is recorded as not in force (commencement not appointed), separately from the Act's default commencement on 2031-07-01."
+      claim: "The answer says s 12(2) was not in force on that date; it MUST NOT treat s 12(2) as having effect because the Act commenced."
+    catches: Act-level commencement applied to every provision.
+  - id: R10-03-compilation-date-is-not-commencement
+    question: "Since when has the 8-minute limit in SAR 42(1) applied?"
+    setup: SAR-2030-compilation-2032 (compiled 2032-07-15) incorporates an amendment made 2031-10-01 that took effect 2031-11-01.
+    expected:
+      mechanism: "R10 dates: compilation date, amendment date, date of effect and ingest date are recorded separately."
+      claim: "The answer gives 2031-11-01 as the date from which the amended text applies, not 2032-07-15."
+    catches: Compilation or ingest dates reported as the date of effect.
+  - id: R10-04-no-silent-mixing
+    question: "What do SAR 41 and SAR 42 require?"
+    setup: An answer draws SAR 41 from SAR-2030-official and SAR 42 from SAR-2030-compilation-2032.
+    expected:
+      mechanism: "R10 expression tracking: each citation's expression is recorded."
+      claim: "Either the answer uses one expression throughout, or it marks each citation's expression and states the mix."
+    catches: Answers stitched from different versions without disclosure.
+  - id: R10-05-temporal-object
+    question: "What does SAR 42 say? (no date given)"
+    expected:
+      mechanism: "R10 temporal object: recorded for the answer."
+      claim: 'The answer states its temporal object (for example, "as compiled at 2032-07-15, the latest text held").'
+    catches: Undated answers that read as timeless.

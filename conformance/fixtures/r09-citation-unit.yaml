@@ -1,0 +1,33 @@
+# R9 Citation at the institution's unit of authority: illustrative, not a suite.
+# "mechanism" = the R9 citation check; "claim" = the displayed claim's result.
+requirement: R9
+fixtures:
+  - id: R9-01-subparagraph-pinpoint
+    question: "Can the Presiding Officer dispense with notice of a motion?"
+    expected_citation: "SAR 41(2)"
+    not_sufficient: "SAR 41"
+    expected:
+      mechanism: "R9 pinpoint check: Pass for \"SAR 41(2)\"; Fail for a whole-unit \"SAR 41\" citation."
+      claim: "Follows from the witness and other applicable checks."
+    catches: Whole-unit citation where the claim relies on one sub-paragraph.
+  - id: R9-02-pinpoint-must-exist
+    question: "What does SAR 41(3) require?"
+    candidate_citation: "SAR 41(3)"
+    expected:
+      mechanism: "R9 pinpoint check: Fail; no such sub-paragraph in SAR-2030-official."
+      claim: "Not displayed as supported (R12: unsupported)."
+    catches: Fabricated pinpoints.
+  - id: R9-03-heading-as-authority
+    question: "Does SAR 42 govern every speech in the Assembly?"
+    candidate_claim: 'SAR 42 is headed "Length of speeches", so it governs all speeches.'
+    expected:
+      mechanism: "R9 identification of non-operative text: the heading is identified as a heading (the synthetic corpus declares headings non-operative)."
+      claim: "A heading alone is not a sufficient basis for a claim about the provision's effect; the claim is not supported (R12: unsupported)."
+    catches: Headings cited as if operative.
+  - id: R9-04-chunk-id-as-citation
+    question: "What does SAR say about notice of motions?"
+    candidate_citation: "chunk 0412 (SAR)"
+    expected:
+      mechanism: "R9 citation form: Fail. Users see the institution's own citation form (R8 printed form); internal chunk identifiers never appear as citations."
+      claim: "Not displayed with a chunk identifier as its citation."
+    catches: Retrieval artefacts surfacing as authority.

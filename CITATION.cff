@@ -1,0 +1,61 @@
+# CFF's top-level "type" allows only software or dataset, so the citable work
+# (a technical report) is given under preferred-citation. The repository URL, DOI
+# and release date identify the first public version of the technical report.
+cff-version: 1.2.0
+message: "If you cite this specification, please cite the specific version you used."
+title: "KNIT WD-0000 · Authority-Aware AI"
+version: 0.6.1
+date-released: "2026-11-26"
+doi: "10.5281/zenodo.24546015"
+repository-code: "https://github.com/KNIT-NZ/authority-aware-ai"
+license: CC-BY-4.0
+authors:
+  - given-names: Brendan
+    family-names: McBryde
+    affiliation: KNIT
+    orcid: "https://orcid.org/0009-0004-0425-7214"
+keywords:
+  - authority-aware AI
+  - institutional authority
+  - legal informatics
+  - retrieval-augmented generation
+  - conformance
+  - civic technology
+abstract: >-
+  Working Draft 0.6.1. A public working draft of requirements and a
+  conformance reporting framework for advisory AI systems that answer from
+  bounded, declared corpora of institutional texts. It distinguishes
+  normative, interpretive and epistemic authority, defines four assurance
+  layers, requires a published coverage statement, and states seventeen
+  requirements, reported per requirement and property with no aggregate
+  score. The requirements were abstracted from one procedural corpus (the
+  Standing Orders and Speakers' Rulings of the New Zealand House of
+  Representatives); application to other bounded institutional rule systems
+  is intended, and application to legislation, case law and mixed legal
+  research is not demonstrated. Several requirements are provisional, so no
+  overall conformance claim is currently available. Formerly numbered KNIT
+  RFC-0000. Not a standard; not an IETF RFC; not peer reviewed.
+preferred-citation:
+  type: report
+  title: "KNIT WD-0000 · Authority-Aware AI"
+  number: "KNIT WD-0000"
+  collection-title: "KNIT Working Drafts"
+  version: 0.6.1
+  year: 2026
+  doi: "10.5281/zenodo.24546015"
+  url: "https://doi.org/10.5281/zenodo.24546015"
+  institution:
+    name: KNIT
+  authors:
+    - given-names: Brendan
+      family-names: McBryde
+      affiliation: KNIT
+      orcid: "https://orcid.org/0009-0004-0425-7214"
+references:
+  - type: software
+    title: "Open Order"
+    authors:
+      - name: KNIT
+    repository-code: "https://github.com/KNIT-NZ/open-order"
+    commit: a3f007e649ce6b203bbc2201aaba7ea15b349cac
+    license: Apache-2.0

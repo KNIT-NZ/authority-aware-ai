@@ -1,0 +1,35 @@
+KNIT WD-0000 · Authority-Aware AI
+Copyright 2026 Brendan McBryde and KNIT contributors.
+
+Specification text and documentation: CC BY 4.0 (see LICENSE).
+Original code, schemas, scripts and test fixtures: Apache-2.0 (see LICENSE-CODE).
+
+Third-party source texts
+------------------------
+Third-party texts keep their own licences and terms. Neither CC BY 4.0 nor
+Apache-2.0 applies to them, and neither implies endorsement by any institution
+whose texts are cited.
+
+New Zealand Parliament (parliament.nz)
+  SPECIFICATION.md (section 6, R7) paraphrases Standing Order 2 of the
+  Standing Orders of the House of Representatives 2023, published with the
+  authority of the House of Representatives. See References in SPECIFICATION.md.
+  Other Standing Orders and Speakers' Rulings are cited by reference or
+  paraphrase. No verbatim Standing Orders or Speakers' Rulings text is reproduced
+  in the specification. The speaking-time example and synthetic fixtures are
+  fictional. No licence or endorsement by Parliament is implied.
+
+  Parliamentary Practice in New Zealand (2023, fifth edition) is cited by
+  title only. No text from it is reproduced, and it is not part of any corpus
+  described here.
+
+New Zealand judgments
+  A brief quotation from Ellis v R [2022] NZSC 114 (at [181]) is reproduced
+  with attribution in SPECIFICATION.md section 5. Judgments of New Zealand
+  courts are not subject to copyright (Copyright Act 1994, s 27(1)(g)). No New
+  Zealand enactment is quoted in this repository.
+
+Published works
+  Brief quotations from published works listed in the references (Magesh et
+  al. 2025; POPVOX Foundation 2025) are used for the purposes of criticism and
+  review, with attribution.

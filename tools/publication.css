@@ -1,0 +1,122 @@
+@page {
+  size: A4;
+  margin: 21mm 23mm 21mm;
+  @top-left {
+    content: "KNIT WD-0000 · Authority-Aware AI";
+    font: 8pt "Noto Sans", sans-serif;
+    color: #555;
+    border: none;
+    border-bottom: 0;
+    padding-bottom: 3mm;
+    vertical-align: bottom;
+  }
+  @top-right {
+    content: "WORKING DRAFT 0.6.1";
+    font: 8pt "Noto Sans", sans-serif;
+    color: #555;
+    border: none;
+    border-bottom: 0;
+    padding-bottom: 3mm;
+    vertical-align: bottom;
+  }
+  @bottom-left {
+    content: "10.5281/zenodo.24546015";
+    font: 8pt "Noto Sans", sans-serif;
+    color: #555;
+  }
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font: 8pt "Noto Sans", sans-serif;
+    color: #555;
+  }
+}
+@page:first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+body {
+  font: 10.5pt/1.48 "Noto Serif", Georgia, serif;
+  color: #171717;
+  hyphens: auto;
+}
+h1, h2, h3, h4 {
+  font-family: "Noto Sans", Arial, sans-serif;
+  line-height: 1.2;
+  break-after: avoid;
+  font-weight: 700;
+  color: #151515;
+}
+h1 {
+  font-size: 25pt;
+  letter-spacing: -0.45pt;
+  margin: 0 0 4mm;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 16pt;
+  margin: 6mm 0 2mm;
+}
+h3 {
+  font-size: 12pt;
+  margin: 4.5mm 0 1.6mm;
+}
+h4 {
+  font-size: 11pt;
+  margin: 3.5mm 0 1.5mm;
+}
+p { margin: 0 0 3mm; orphans: 3; widows: 3; }
+body > h1 + p {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+}
+a { color: #244b62; text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { border: 0; border-top: .55pt solid #b6b6b6; margin: 5mm 0; }
+blockquote { border-left: 2pt solid #777; margin: 3mm 0; padding: 1.5mm 0 1.5mm 4mm; break-inside: avoid; }
+blockquote p:last-child { margin-bottom: 0; }
+code { font: 8.9pt "DejaVu Sans Mono", monospace; overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; }
+.cover-logo { width: 32mm; margin: 0 0 7mm; }
+.cover-logo img { width: 100%; height: auto; display: block; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font: 8.8pt/1.34 "Noto Sans", sans-serif;
+  margin: 3mm 0 4mm;
+}
+thead { display: table-header-group; }
+th {
+  text-align: left;
+  background: #e9e9e9;
+  font-weight: 700;
+}
+th, td {
+  border-bottom: .5pt solid #c5c5c5;
+  padding: 2mm 2.2mm;
+  vertical-align: top;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+tr { break-inside: avoid; }
+th:empty { background: none; border: 0; padding: 0; }
+/* Column proportions are supplied by the renderer using colgroup, rather
+   than on padded cells, to keep the entire table within the text measure. */
+table col { padding: 0; }
+ul, ol { margin: 1mm 0 3mm; padding-left: 6mm; }
+li { margin: 0 0 1.5mm; orphans: 2; widows: 2; }
+li p { margin: 0 0 1mm; }
+nav { break-before: auto; break-inside: avoid; break-after: page; }
+nav h2 { margin-top: 0; }
+nav ol { list-style: none; padding: 0; margin: 0; }
+nav li {
+  margin: 0 0 3mm;
+  border-bottom: .4pt solid #ddd;
+  padding: 0 0 2mm;
+  font: 11pt/1.3 "Noto Sans", sans-serif;
+}
+nav a::after { content: leader('.') target-counter(attr(href), page); color: #555; }
+/* Keep the short author preface with the cover metadata. */
+body > table:first-of-type td, body > table:first-of-type th { padding-top: 1.5mm; padding-bottom: 1.5mm; }

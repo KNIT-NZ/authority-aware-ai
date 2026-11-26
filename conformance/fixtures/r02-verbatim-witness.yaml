@@ -1,0 +1,79 @@
+# R2 Verbatim witness: illustrative, not a suite. Synthetic text only.
+# "mechanism" is the result of the R2 witness or ingestion check itself.
+# "claim" is the result for the claim as displayed (assurance state, R12), which
+# may also depend on other requirements. The two are reported separately.
+requirement: R2
+fixtures:
+  - id: R2-01-invented-quote
+    question: "How much notice is needed for a motion?"
+    candidate_claim: 'SAR 41(1) says "a member must give two sitting days’ notice in writing".'
+    expected:
+      mechanism: "R2 witness matching: Fail. The quotation matches no span of SAR-41 under the published normalisation policy."
+      claim: "Not displayed as a quotation or as supported (R12: unsupported)."
+    catches: Invented quotations formatted as quotations.
+  - id: R2-02-altered-quote
+    question: "How long may a member speak in a debate on a motion?"
+    candidate_claim: 'SAR 42(1): "No member may speak for longer than 15 minutes".'
+    expected:
+      mechanism: 'R2 witness matching: Fail ("15" vs "10").'
+      claim: "Not displayed as supported (R12: unsupported)."
+    catches: Plausible numeric alteration.
+  - id: R2-03-truncated-drops-qualifier
+    question: "Is notice always required for a motion?"
+    candidate_claim: 'SAR 41: "A member must give one sitting day’s notice of a motion." Notice is therefore always required.'
+    witness_offered: "SAR-41(1), exact"
+    expected:
+      mechanism: "R2 witness integrity: Pass. The witness matches SAR-41(1) exactly."
+      claim: >-
+        R3/R17 treatment of the omitted qualifier SAR-41(2): Conclusion withheld
+        or conditional ("notice is required unless the Presiding Officer has
+        dispensed with it"). The categorical "always" MUST NOT be displayed as
+        supported. Under 0.6.1, R3 is provisional, so this is reported as an
+        interim-rule outcome (interim test method (a)), not as conformance.
+    catches: Exact-match checks that pass a truncated basis.
+  - id: R2-04-right-words-wrong-unit
+    question: "Can notice of a motion be dispensed with?"
+    candidate_claim: 'SAR 42(2): "Subrule (1) does not apply to a motion of which the Presiding Officer has dispensed with notice."'
+    expected:
+      mechanism: "R2 witness matching: Fail for the cited unit. The text exists, but in SAR-41(2), not SAR-42(2)."
+      claim: "Not displayed as supported on this citation (R12: unsupported)."
+    catches: Corpus-wide substring checks that ignore the cited unit.
+  - id: R2-05-multi-span
+    question: "Is notice of a motion required?"
+    candidate_claim: "Notice is required unless dispensed with by the Presiding Officer."
+    witness_offered: ["SAR-41(1)", "SAR-41(2)"]
+    expected:
+      mechanism: "R2 witness matching: Pass. Each span is matched separately and enumerated in the evidence record (§4 \"witness\")."
+      claim: "Paraphrase basis: supported only if its L3 check also passes (R1); otherwise not displayed as supported."
+    catches: Concatenated pseudo-quotations that never appear contiguously.
+  - id: R2-06-normalisation
+    question: "How much notice is needed for a motion?"
+    variants:
+      - "curly vs straight apostrophe in day's"
+      - "non-breaking space before 'minutes'"
+      - "line break inside subrule (1)"
+    expected:
+      mechanism: >-
+        R2 witness matching: Pass or Fail strictly according to the
+        implementation's published normalisation policy. A policy that treated
+        different words, numbers or negation as matching would not meet R2.
+      claim: "Follows from the mechanism result and any other applicable checks."
+    catches: Unpublished or over-broad normalisation.
+  - id: R2-07-chunk-boundary
+    question: "Is notice of a motion required, and can it be dispensed with?"
+    setup: SAR-41 is split by the retriever into chunk A = (1), chunk B = (2).
+    expected:
+      mechanism: "R2 witness matching: Pass. Matching is against the source unit, not a chunk; a claim drawing on both is matched to both spans of SAR-41."
+      claim: "Follows from the mechanism result and any other applicable checks."
+    catches: Chunk-level matching that rejects valid multi-chunk witnesses or accepts chunk text altered by splitting.
+  - id: R2-08-ingestion-differs-from-official
+    question: "How long may a member speak in a debate on a motion?"
+    setup: The ingested copy of SAR-42(1) reads "15 minutes" (scraping error); the official manifestation (SAR-2030-official) reads "10 minutes".
+    expected:
+      mechanism: >-
+        R2 witness matching against the stored copy: Pass. R2 ingestion
+        authenticity: Fail (the stored text does not derive from, or does not
+        match, the official manifestation), or the ingestion record shows the
+        manifestation used and that it is not official.
+      claim: "A claim of \"15 minutes\" MUST NOT be reported as faithful to the official text."
+    catches: Treating witness matching against an unverified copy as textual integrity.

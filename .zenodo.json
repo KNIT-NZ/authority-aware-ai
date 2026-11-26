@@ -1,0 +1,39 @@
+{
+  "title": "KNIT WD-0000 · Authority-Aware AI",
+  "upload_type": "publication",
+  "publication_type": "report",
+  "version": "0.6.1",
+  "description": "<p>Working Draft 0.6.1 of KNIT WD-0000 · Authority-Aware AI (formerly numbered KNIT RFC-0000), in the KNIT Working Drafts series. A public working draft of requirements and a conformance reporting framework for advisory AI systems that answer from bounded, declared corpora of institutional texts. It distinguishes normative, interpretive and epistemic authority; sets out four assurance layers (textual integrity, source admissibility, semantic fidelity and evidential sufficiency); requires a published coverage statement; and states seventeen requirements, reported per requirement and property in three categories with no aggregate score.</p><p>The requirements were abstracted from one procedural corpus (the Standing Orders and Speakers' Rulings of the New Zealand House of Representatives). Application to other bounded institutional rule systems is intended; application to legislation, case law and mixed legal research is not demonstrated. Several requirements are provisional, so no overall conformance claim is currently available, and Structural conformance is proposed, not currently claimable.</p><p>This is a self-published draft for comment. It is not a standard, not an IETF RFC and has not been peer reviewed. Conformance does not establish legal compliance or confer institutional authority or permission to provide regulated services. Implementation observations for Open Order are implementation-maturity observations at a pinned commit, not conformance results.</p>",
+  "creators": [
+    {
+      "name": "McBryde, Brendan",
+      "affiliation": "KNIT",
+      "orcid": "0009-0004-0425-7214"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "keywords": [
+    "authority-aware AI",
+    "institutional authority",
+    "legal informatics",
+    "retrieval-augmented generation",
+    "conformance",
+    "civic technology"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/KNIT-NZ/open-order/tree/a3f007e649ce6b203bbc2201aaba7ea15b349cac",
+      "relation": "references",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/KNIT-NZ/authority-aware-ai",
+      "relation": "issupplementedby",
+      "scheme": "url"
+    }
+  ],
+  "notes": "KNIT Working Drafts series. Specification text CC BY 4.0; original code and fixtures Apache-2.0; third-party source texts keep their own terms (see NOTICE). Version DOI reserved for manual deposit: 10.5281/zenodo.24546015.",
+  "publication_date": "2026-11-26"
+}

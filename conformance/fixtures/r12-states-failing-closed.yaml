@@ -1,0 +1,57 @@
+# R12 Assurance states and failing closed: illustrative, not a suite.
+# "mechanism" = the check or pipeline behaviour; "claim" = what the user is shown.
+requirement: R12
+fixtures:
+  - id: R12-01-fallback-bypass
+    question: "Is notice always required for a motion?"
+    event: The validator times out; the implementation's fallback path returns the unvalidated draft.
+    expected:
+      mechanism: "R12 failing closed: Fail if any fallback path delivers a substantive claim that skipped a required check."
+      claim: "Unchecked substantive conclusions MUST be withheld. Display a notice that checking failed or did not complete, with identified source excerpts and separately supported conclusions where appropriate."
+    catches: Error-handling paths that bypass checks.
+  - id: R12-02-streamed-then-retracted
+    question: "Is notice always required for a motion?"
+    event: A sentence stating "notice is never required" is streamed to the user, then rejected by post-generation checks and removed.
+    expected:
+      mechanism: "Post-generation check: Pass (it correctly rejects the claim)."
+      claim: >-
+        R12 streaming: FAILURE. A conclusion was displayed before its checks
+        completed and was then rejected; later retraction does not cure it.
+        Conforming behaviour streams only progress, retrieval information and
+        identified source excerpts, and releases conclusions after their checks.
+      logging: >-
+        Any record of the event consists only of content-free operational
+        events (for example, event type, timestamps, check outcome) or synthetic
+        test records, consistent with R15; not the user's question or the
+        rejected text.
+    catches: Users reading, and acting on, conclusions that were never supported.
+  - id: R12-03-provider-failure
+    question: "How long may a member speak in a debate on a motion?"
+    event: The drafting model provider returns an error mid-answer.
+    expected:
+      mechanism: "R12 failing closed: partial generated text is not delivered as an answer."
+      claim: "The user sees a failure state and, where possible, the retrieved texts (a useful partial answer, §3.6)."
+    catches: Truncated answers that look complete.
+  - id: R12-04-state-consistency
+    question: "Is notice of a motion required?"
+    setup: Answer label "Answered from the texts held"; one claim inside it is unsupported.
+    expected:
+      mechanism: "R12 state derivation: the answer-level state is computed from claim states."
+      claim: "The unsupported substantive conclusion MUST be withheld. The delivered answer-level state MUST not overstate the assurance of the remaining claims; disclose the gap without displaying the rejected conclusion."
+    catches: Answer-level labels that overstate claim-level support.
+  - id: R12-05-supported-expansion
+    question: "How long may a member speak in a debate on a motion?"
+    expected:
+      mechanism: "R12 expansion: available in the same view wherever \"Supported\" or its label is shown."
+      claim: "The expansion shows which layers were checked, by which mechanism, and says it is not a ruling or advice."
+    catches: Unexplained badges.
+  - id: R12-06-restricted-terms
+    probes:
+      - '"Verified answer"'
+      - '"Independently reviewing" (where only a second call to the same model occurs)'
+      - '"Authoritative answer"'
+      - '"Complete search of the Rules"'
+    expected:
+      mechanism: "Wording review of answers, labels, progress messages and the implementer's own materials."
+      claim: "None of these appears, except as permitted in SPECIFICATION.md §7.4."
+    catches: Status language that overclaims.

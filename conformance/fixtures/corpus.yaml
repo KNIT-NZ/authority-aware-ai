@@ -1,0 +1,65 @@
+# Synthetic corpus for illustrative fixtures. Invented text; not real law.
+# Checksums: SHA-256 (hex) over the UTF-8 bytes of the expression's units,
+# serialised one line per sub-paragraph as "<unit id>|<sub-paragraph>|<text>",
+# in the order listed, joined with "\n" (no trailing newline). They stand in for
+# the checksum of an ingested manifestation; the instruments have none, being fictional.
+corpus:
+  - instrument: Synthetic Assembly Rules 2030
+    short: SAR
+    note: >-
+      In this synthetic corpus the issuing Assembly declares its headings
+      non-operative; they are aids to navigation only.
+    expressions:
+      - id: SAR-2030-official
+        status: official            # published by the (fictional) Assembly Office
+        published: 2030-03-01
+        checksum_sha256: "6992ec349ac87f56b276a9f0d9973f918e448bb60635890438718f530c6ea05a"
+        units:
+          - id: SAR-41
+            heading: "Notice of motions"            # non-operative (see note)
+            text:
+              "(1)": "A member must give one sitting day's notice of a motion."
+              "(2)": "Subrule (1) does not apply to a motion of which the Presiding Officer has dispensed with notice."
+          - id: SAR-42
+            heading: "Length of speeches"
+            text:
+              "(1)": "No member may speak for longer than 10 minutes in a debate on a motion."
+              "(2)": "The Presiding Officer may, on request, allow a member a further 5 minutes."
+      - id: SAR-2030-compilation-2032
+        status: editorial-compilation
+        compiled: 2032-07-15
+        amendments_incorporated:
+          - unit: "SAR 42(1)"
+            change: '"10 minutes" replaced by "8 minutes"'
+            made: 2031-10-01
+            takes_effect: 2031-11-01
+        checksum_sha256: "c2bf9ae4ecfb1f6750c8056d823d70888f59c6a302b96129bb6fbc46d8fe7be4"
+        units:
+          - id: SAR-41
+            heading: "Notice of motions"
+            text:
+              "(1)": "A member must give one sitting day's notice of a motion."
+              "(2)": "Subrule (1) does not apply to a motion of which the Presiding Officer has dispensed with notice."
+          - id: SAR-42
+            heading: "Length of speeches"
+            text:
+              "(1)": "No member may speak for longer than 8 minutes in a debate on a motion."
+              "(2)": "The Presiding Officer may, on request, allow a member a further 5 minutes."
+  - instrument: Synthetic Tenancy Act 2031
+    short: STA
+    expressions:
+      - id: STA-2031-as-made
+        status: official            # published by the (fictional) legislature
+        published: 2031-05-20
+        commencement:
+          default: 2031-07-01
+          exceptions:
+            - provision: "s 12(2)"
+              commences: "on a date appointed by Order in Council"
+              appointed: null       # not yet appointed
+        checksum_sha256: "2f25caaa5726d78c74e0dfdbc474a4ef2b293c1c07566d4d39a8e115942e702f"
+        units:
+          - id: STA-s12
+            text:
+              "(1)": "A landlord must give the tenant 14 days' notice before entering the premises."
+              "(2)": "Subsection (1) does not apply in an emergency."
